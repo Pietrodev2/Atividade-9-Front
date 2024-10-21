@@ -1,0 +1,110 @@
+Objetivo
+
+O objetivo deste projeto foi construir uma aplicação web utilizando React e React Router para criar várias páginas, incluindo uma página inicial, uma página de blogs, uma página de contato e uma página para erros (NoPage).
+Pacotes Utilizados
+
+Os pacotes principais utilizados neste projeto foram:
+
+    React: Biblioteca principal para construir interfaces de usuário.
+        Instalação: npm install react react-dom
+
+    React Router: Biblioteca para gerenciar a navegação entre as páginas da aplicação.
+        Instalação: npm install react-router-dom
+
+    Estilização: Estilos inline foram utilizados para aplicar estilos diretamente nos componentes, sem a necessidade de pacotes adicionais de estilização.
+
+Estrutura do Projeto
+
+A estrutura do projeto foi organizada da seguinte forma:
+
+lua
+
+src/
+|-- pages/
+|   |-- Layout.jsx
+|   |-- Home.jsx
+|   |-- Blogs.jsx
+|   |-- Contact.jsx
+|   |-- NoPage.jsx
+|   |-- imgs/
+|       |-- kaiser.jpg
+|       |-- Rin.png
+|       |-- Sae_itoshi.webp
+|-- App.jsx
+|-- index.js
+
+Descrição dos Arquivos
+
+    Layout.jsx: Componente responsável pela estrutura da aplicação, incluindo a navegação e a renderização de páginas. Ele utiliza o componente <Outlet /> para renderizar os componentes das páginas filhas.
+
+    Home.jsx: Página inicial que exibe uma mensagem de boas-vindas e informações relevantes. Estilizado para ter o texto alinhado à esquerda, centralizado verticalmente na tela.
+
+    Blogs.jsx e Contact.jsx: Páginas de exemplo que podem ser preenchidas com conteúdo relevante conforme o projeto avança.
+
+    NoPage.jsx: Página de erro que é exibida quando uma rota não reconhecida é acessada.
+
+    imgs/: Pasta contendo imagens que são utilizadas como fundo nas páginas.
+
+Procedimento
+1. Configuração Inicial
+
+    Criei um novo projeto React usando Create React App:
+
+    bash
+
+npx create-react-app my-app
+cd my-app
+
+Instalei o React Router:
+
+bash
+
+    npm install react-router-dom
+
+2. Criação dos Componentes
+
+    Layout: O componente Layout.jsx foi criado para incluir a barra de navegação e a renderização das páginas. A barra de navegação é fixa no topo e utiliza <Link /> para navegar entre as páginas.
+
+    Páginas: Criei os componentes Home, Blogs, Contact e NoPage. Cada um desses componentes foi configurado para exibir informações relevantes.
+
+3. Implementação do Router
+
+    No arquivo App.jsx, configurei as rotas utilizando o BrowserRouter do react-router-dom, definindo as rotas para cada uma das páginas. O código do App.jsx ficou assim:
+
+    jsx
+
+    import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+    import Layout from './pages/Layout';
+    import Home from './pages/Home';
+    import Blogs from './pages/Blogs';
+    import Contact from './pages/Contact';
+    import NoPage from './pages/NoPage';
+
+    const App = () => {
+      return (
+        <Router>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NoPage />} />
+            </Routes>
+          </Layout>
+        </Router>
+      );
+    };
+
+    export default App;
+
+4. Estilização
+
+    A estilização foi realizada principalmente através de estilos inline nos componentes. Para o Layout, utilizei propriedades CSS para centralizar e posicionar a barra de navegação e as imagens de fundo.
+
+5. Testes e Ajustes
+
+    Após implementar as páginas, realizei testes para garantir que todas as rotas funcionavam corretamente e que o layout era responsivo e agradável. Fiz ajustes nos estilos conforme necessário.
+
+6. Conclusão
+
+O projeto foi finalizado com sucesso, e agora as páginas estão configuradas para exibir o conteúdo desejado. A estrutura é facilmente extensível para adicionar mais funcionalidades e páginas no futuro.
